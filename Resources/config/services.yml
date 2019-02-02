@@ -1,15 +1,18 @@
 services:
   yaso.entity_rating_bundle.manager:
       class: Yaso\Bundle\EntityRatingBundle\Manager\EntityRatingManager
+      public: true
       arguments:
-      - '@annotations.reader'
-      - '@yaso.entity_rating_bundle.form_factory'
-      - '@event_dispatcher'
-      - '@doctrine.orm.entity_manager'
-      - '%yaso_entity_rating.entity_rating_class%'
-      - '%yaso_entity_rating.map_type_to_class%'
-      - '%yaso_entity_rating.rate_by_ip_limitation%'
+          - '@annotations.reader'
+          - '@yaso.entity_rating_bundle.form_factory'
+          - '@event_dispatcher'
+          - '@doctrine.orm.entity_manager'
+          - '%yaso_entity_rating.entity_rating_class%'
+          - '%yaso_entity_rating.map_type_to_class%'
+          - '%yaso_entity_rating.rate_by_ip_limitation%'
+
   yaso.entity_rating_bundle.form_factory:
       class: Yaso\Bundle\EntityRatingBundle\Factory\EntityRatingFormFactory
+      public: true
       arguments:
-      - '@form.factory'
+          - '@form.factory'

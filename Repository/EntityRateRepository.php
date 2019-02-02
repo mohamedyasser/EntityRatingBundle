@@ -6,6 +6,13 @@ use Doctrine\ORM\EntityRepository;
 
 class EntityRateRepository extends EntityRepository implements EntityRateRepositoryInterface
 {
+    /**
+     * @param $entityId
+     * @param $entityType
+     * @return mixed
+     * @throws \Doctrine\ORM\NoResultException
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
     public function getEntityAverageRate($entityId, $entityType)
     {
         return $this->createQueryBuilder('er')
@@ -18,6 +25,15 @@ class EntityRateRepository extends EntityRepository implements EntityRateReposit
             ->getSingleResult();
     }
 
+    /**
+     * @param $ip
+     * @param $userAgent
+     * @param $entityId
+     * @param $entityType
+     * @param $ignoreFields
+     * @return mixed
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
     public function getRateByIpAndUserAgent($ip, $userAgent, $entityId, $entityType, $ignoreFields)
     {
         $q = $this->createQueryBuilder('er')

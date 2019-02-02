@@ -1,15 +1,15 @@
 services:
-  cymo.entity_rating_bundle.manager:
-      class: Cymo\Bundle\EntityRatingBundle\Manager\EntityRatingManager
+  yaso.entity_rating_bundle.manager:
+      class: Yaso\Bundle\EntityRatingBundle\Manager\EntityRatingManager
       arguments:
       - '@annotations.reader'
-      - '@cymo.entity_rating_bundle.form_factory'
+      - '@yaso.entity_rating_bundle.form_factory'
       - '@event_dispatcher'
       - '@doctrine.orm.entity_manager'
-      - '%cymo_entity_rating.entity_rating_class%'
-      - '%cymo_entity_rating.map_type_to_class%'
-      - '%cymo_entity_rating.rate_by_ip_limitation%'
-  cymo.entity_rating_bundle.form_factory:
-      class: Cymo\Bundle\EntityRatingBundle\Factory\EntityRatingFormFactory
+      - '%yaso_entity_rating.entity_rating_class%'
+      - '%yaso_entity_rating.map_type_to_class%'
+      - '%yaso_entity_rating.rate_by_ip_limitation%'
+  yaso.entity_rating_bundle.form_factory:
+      class: Yaso\Bundle\EntityRatingBundle\Factory\EntityRatingFormFactory
       arguments:
       - '@form.factory'

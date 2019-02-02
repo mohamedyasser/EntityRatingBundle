@@ -1,6 +1,6 @@
 <?php
 
-namespace Cymo\Bundle\EntityRatingBundle\Repository;
+namespace Yaso\Bundle\EntityRatingBundle\Repository;
 
 interface EntityRateRepositoryInterface
 {

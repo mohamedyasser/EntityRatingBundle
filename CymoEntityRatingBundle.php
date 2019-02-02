@@ -1,9 +1,9 @@
 <?php
 
-namespace Cymo\Bundle\EntityRatingBundle;
+namespace Yaso\Bundle\EntityRatingBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class CymoEntityRatingBundle extends Bundle
+class YasoEntityRatingBundle extends Bundle
 {
 }

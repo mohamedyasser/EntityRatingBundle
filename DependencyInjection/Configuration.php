@@ -1,6 +1,6 @@
 <?php
 
-namespace Cymo\Bundle\EntityRatingBundle\DependencyInjection;
+namespace Yaso\Bundle\EntityRatingBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
@@ -17,13 +17,13 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode    = $treeBuilder->root('cymo_entity_rating_bundle');
+        $rootNode    = $treeBuilder->root('yaso_entity_rating_bundle');
         $rootNode
             ->children()
                 ->scalarNode('entity_rating_class')
                 ->end()
                 ->scalarNode('entity_rating_manager_service')
-                    ->defaultValue('cymo.entity_rating_bundle.manager')
+                    ->defaultValue('yaso.entity_rating_bundle.manager')
                 ->end()
                 ->integerNode('rate_by_ip_limitation')
                     ->defaultValue(10)

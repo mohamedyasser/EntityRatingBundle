@@ -1,6 +1,6 @@
-cymo_entity_rating_rate:
+yaso_entity_rating_rate:
     path:     /entity/rate/{type}/{id}
     methods:    [POST]
-    defaults: { _controller: CymoEntityRatingBundle:EntityRating:rateEntity }
+    defaults: { _controller: YasoEntityRatingBundle:EntityRating:rateEntity }
     options:
         expose: true

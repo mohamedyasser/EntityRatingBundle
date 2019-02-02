@@ -1,9 +1,9 @@
 <?php
 
-namespace Cymo\Bundle\EntityRatingBundle\Controller;
+namespace Yaso\Bundle\EntityRatingBundle\Controller;
 
 use Blogtrotting\AdventureBundle\Manager\EntityRatingManager;
-use Cymo\Bundle\EntityRatingBundle\Exception\EntityRateIpLimitationReachedException;
+use Yaso\Bundle\EntityRatingBundle\Exception\EntityRateIpLimitationReachedException;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -12,7 +12,7 @@ class EntityRatingController extends Controller
 {
     public function rateEntityAction(Request $request, $type, $id)
     {
-        $manager = $this->container->getParameter('cymo_entity_rating.entity_rating_manager_service');
+        $manager = $this->container->getParameter('yaso_entity_rating.entity_rating_manager_service');
         /** @var EntityRatingManager $ratingManager */
         $ratingManager = $this->container->get($manager);
 

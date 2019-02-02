@@ -8,7 +8,7 @@ var EntityRating = function (options) {
         var sameEntityRatingIdForms = $('form[data-entity-rating-id="' + self.options.form.data('entity-rating-id') + '"]');
         sameEntityRatingIdForms.find(self.options.radioButtonClass + '[value=' + e.target.value + ']').prop('checked', true);
         $.post({
-            url  : Routing.generate('cymo_entity_rating_rate', {
+            url  : Routing.generate('yaso_entity_rating_rate', {
                 id   : self.options.form.find('input.entity-id').val(),
                 type : self.options.form.find('input.entity-type').val()
             }),

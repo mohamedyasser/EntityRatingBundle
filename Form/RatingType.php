@@ -1,6 +1,6 @@
 <?php
 
-namespace Cymo\Bundle\EntityRatingBundle\Form;
+namespace Yaso\Bundle\EntityRatingBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;

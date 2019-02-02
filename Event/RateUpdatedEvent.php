@@ -1,13 +1,13 @@
 <?php
 
-namespace Cymo\Bundle\EntityRatingBundle\Event;
+namespace Yaso\Bundle\EntityRatingBundle\Event;
 
-use Cymo\Bundle\EntityRatingBundle\Entity\EntityRate;
+use Yaso\Bundle\EntityRatingBundle\Entity\EntityRate;
 use Symfony\Component\EventDispatcher\Event;
 
 class RateUpdatedEvent extends Event
 {
-    const NAME = 'cymo.entity_rating.rate_updated';
+    const NAME = 'yaso.entity_rating.rate_updated';
     /**
      * @var EntityRate
      */

@@ -1,6 +1,6 @@
 <?php
 
-namespace Cymo\Bundle\EntityRatingBundle\Annotation;
+namespace Yaso\Bundle\EntityRatingBundle\Annotation;
 
 use Doctrine\Common\Annotations\Annotation\Attribute;
 use Doctrine\Common\Annotations\Annotation\Attributes;

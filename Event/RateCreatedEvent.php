@@ -1,14 +1,14 @@
 <?php
 
-namespace Cymo\Bundle\EntityRatingBundle\Event;
+namespace Yaso\Bundle\EntityRatingBundle\Event;
 
-use Cymo\Bundle\EntityRatingBundle\Entity\EntityRate;
-use Cymo\Bundle\EntityRatingBundle\Entity\EntityRateInterface;
+use Yaso\Bundle\EntityRatingBundle\Entity\EntityRate;
+use Yaso\Bundle\EntityRatingBundle\Entity\EntityRateInterface;
 use Symfony\Component\EventDispatcher\Event;
 
 class RateCreatedEvent extends Event
 {
-    const NAME = 'cymo.entity_rating.rate_created';
+    const NAME = 'yaso.entity_rating.rate_created';
     /**
      * @var EntityRate
      */

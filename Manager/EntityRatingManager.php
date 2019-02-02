@@ -1,17 +1,17 @@
 <?php
 
-namespace Cymo\Bundle\EntityRatingBundle\Manager;
+namespace Yaso\Bundle\EntityRatingBundle\Manager;
 
-use Cymo\Bundle\EntityRatingBundle\Annotation\Rated;
-use Cymo\Bundle\EntityRatingBundle\Entity\EntityRate;
-use Cymo\Bundle\EntityRatingBundle\Entity\EntityRateInterface;
-use Cymo\Bundle\EntityRatingBundle\Event\RateCreatedEvent;
-use Cymo\Bundle\EntityRatingBundle\Event\RateUpdatedEvent;
-use Cymo\Bundle\EntityRatingBundle\Exception\EntityRateIpLimitationReachedException;
-use Cymo\Bundle\EntityRatingBundle\Exception\UndeclaredEntityRatingTypeException;
-use Cymo\Bundle\EntityRatingBundle\Exception\UnsupportedEntityRatingClassException;
-use Cymo\Bundle\EntityRatingBundle\Factory\EntityRatingFormFactory;
-use Cymo\Bundle\EntityRatingBundle\Repository\EntityRateRepository;
+use Yaso\Bundle\EntityRatingBundle\Annotation\Rated;
+use Yaso\Bundle\EntityRatingBundle\Entity\EntityRate;
+use Yaso\Bundle\EntityRatingBundle\Entity\EntityRateInterface;
+use Yaso\Bundle\EntityRatingBundle\Event\RateCreatedEvent;
+use Yaso\Bundle\EntityRatingBundle\Event\RateUpdatedEvent;
+use Yaso\Bundle\EntityRatingBundle\Exception\EntityRateIpLimitationReachedException;
+use Yaso\Bundle\EntityRatingBundle\Exception\UndeclaredEntityRatingTypeException;
+use Yaso\Bundle\EntityRatingBundle\Exception\UnsupportedEntityRatingClassException;
+use Yaso\Bundle\EntityRatingBundle\Factory\EntityRatingFormFactory;
+use Yaso\Bundle\EntityRatingBundle\Repository\EntityRateRepository;
 use Doctrine\Common\Annotations\AnnotationReader;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\EventDispatcher\EventDispatcher;
@@ -130,7 +130,7 @@ class EntityRatingManager
     protected function checkConfiguration($entityType)
     {
         if (false === array_key_exists($entityType, $this->mapTypeToClass)) {
-            throw new UndeclaredEntityRatingTypeException(sprintf('You must declare the %s type and the corresponding class under the cymo_entity_rating.map_type_to_class configuration key.', $entityType));
+            throw new UndeclaredEntityRatingTypeException(sprintf('You must declare the %s type and the corresponding class under the yaso_entity_rating.map_type_to_class configuration key.', $entityType));
         }
 
         if (false === $annotation = $this->typeIsSupported($this->mapTypeToClass[$entityType])) {

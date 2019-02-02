@@ -1,6 +1,6 @@
 <?php
 
-namespace Cymo\Bundle\EntityRatingBundle\Entity;
+namespace Yaso\Bundle\EntityRatingBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Cymo\Bundle\EntityRatingBundle\Exception;
+namespace Yaso\Bundle\EntityRatingBundle\Exception;
 
 class UndeclaredEntityRatingTypeException extends \Exception
 {

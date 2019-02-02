@@ -7,7 +7,7 @@
 The easiest way is with [Composer](https://getcomposer.org/) package manager
 ```json
 "require": {
-    "cymo/entity-rating-bundle": "^1.0"
+    "yaso/entity-rating-bundle": "^1.0"
 }
 ```
 
@@ -19,7 +19,7 @@ public function registerBundles()
 {
     $bundles = array(
         // ...
-        new Cymo\Bundle\EntityRatingBundle\CymoEntityRatingBundle(),
+        new Yaso\Bundle\EntityRatingBundle\YasoEntityRatingBundle(),
         // ...
     );
 }
@@ -28,8 +28,8 @@ public function registerBundles()
 Import routes:
 ```yaml
 # app/config/routing.yml
-cymo_entity_rating:
-    resource: "@CymoEntityRatingBundle/Resources/config/routing.yml"
+yaso_entity_rating:
+    resource: "@YasoEntityRatingBundle/Resources/config/routing.yml"
     prefix:   /
 ```
 #### Configuration
@@ -41,12 +41,12 @@ Extending the abstract entity to create your own
 namespace Acme\AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Cymo\Bundle\EntityRatingBundle\Entity\EntityRate as BaseEntityRate;
+use Yaso\Bundle\EntityRatingBundle\Entity\EntityRate as BaseEntityRate;
 
 /**
  * EntityRate
  * @ORM\Table(name="entity_rate")
- * @ORM\Entity(repositoryClass="Cymo\Bundle\EntityRatingBundle\Repository\EntityRateRepository")
+ * @ORM\Entity(repositoryClass="Yaso\Bundle\EntityRatingBundle\Repository\EntityRateRepository")
  */
 class EntityRate extends BaseEntityRate
 {
@@ -79,7 +79,7 @@ Add the annotation to your entity class:
 ```php
 # src/Acme/AppBundle/Entity/Post.php
 
-use Cymo\Bundle\EntityRatingBundle\Annotation\Rated;
+use Yaso\Bundle\EntityRatingBundle\Annotation\Rated;
 ...
 
 /**
@@ -94,7 +94,7 @@ use Cymo\Bundle\EntityRatingBundle\Annotation\Rated;
 Configure the bundle:
 ```yaml
 # app/config/config.yml
-cymo_entity_rating:
+yaso_entity_rating:
      # Your EntityRate namespace, persisted in the DB (according to the namespace of the entity previously created)
      entity_rating_class: Acme\AppBundle\Entity\EntityRate
      # If you decide to extend the default manager, put the service name here
@@ -110,12 +110,12 @@ cymo_entity_rating:
 # In order to print the Rating field, pass the template of the field to twig       
 twig:
     form_themes:
-        - "CymoEntityRatingBundle:form:fields.html.twig"
+        - "YasoEntityRatingBundle:form:fields.html.twig"
 ```
 
 Generate the rating form in the controller:
 ```php
-$entityRatingManager = $this->get('cymo.entity_rating_bundle.manager');
+$entityRatingManager = $this->get('yaso.entity_rating_bundle.manager');
 $ratingForm          = $entityRatingManager->generateForm(Post::RATING_ALIAS, $post->getId());
 $globalRateData      = $entityRatingManager->getGlobalRateData($post->getId(), Post::RATING_ALIAS);
 
@@ -134,7 +134,7 @@ return $this->render(
 ```
 Display the form in the view:
 ```twig
-{% include 'CymoEntityRatingBundle::ratingWidget.html.twig' with {'form':ratingForm, 'globalRateData':globalRateData} only %}
+{% include 'YasoEntityRatingBundle::ratingWidget.html.twig' with {'form':ratingForm, 'globalRateData':globalRateData} only %}
 ```
 
 #### Importing the assets
@@ -143,12 +143,12 @@ You can import them directly:
 
 JS
 ```twig
-<script src="{{ asset('bundles/cymoentityrating/js/entityRating.js') }}"></script>
+<script src="{{ asset('bundles/yasoentityrating/js/entityRating.js') }}"></script>
 ```
 
 CSS
 ```twig
-<link rel="stylesheet" href="{{ asset('bundles/cymoentityrating/css/entityRating.css') }}" type="text/css" media="screen">
+<link rel="stylesheet" href="{{ asset('bundles/yasoentityrating/css/entityRating.css') }}" type="text/css" media="screen">
 ```
 
 Or use a task manager (gulp/grunt...) to minify/concat/uglify them before serving them.
@@ -211,9 +211,9 @@ Example: **saving the logged user in the rate Entity**
 
 namespace Acme\AppBundle\Manager;
 
-use Cymo\Bundle\EntityRatingBundle\Entity\EntityRateInterface;
-use Cymo\Bundle\EntityRatingBundle\Factory\EntityRatingFormFactory;
-use Cymo\Bundle\EntityRatingBundle\Manager\EntityRatingManager as BaseEntityRatingManager;
+use Yaso\Bundle\EntityRatingBundle\Entity\EntityRateInterface;
+use Yaso\Bundle\EntityRatingBundle\Factory\EntityRatingFormFactory;
+use Yaso\Bundle\EntityRatingBundle\Manager\EntityRatingManager as BaseEntityRatingManager;
 use Doctrine\Common\Annotations\AnnotationReader;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
@@ -283,12 +283,12 @@ class EntityRatingManager extends BaseEntityRatingManager
 ```yaml
 acme.entity_rating.manager:
     class: Acme\AppBundle\Manager\EntityRatingManager
-    parent: cymo.entity_rating_bundle.manager
+    parent: yaso.entity_rating_bundle.manager
     arguments: ['@security.token_storage']
 ```
 
 #### Events
 
 The bundle dispatches events when a rate is : 
-- Created : `cymo.entity_rating.rate_created`
-- Updated : `cymo.entity_rating.rate_updated`
+- Created : `yaso.entity_rating.rate_created`
+- Updated : `yaso.entity_rating.rate_updated`

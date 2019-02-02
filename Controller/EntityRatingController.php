@@ -2,7 +2,7 @@
 
 namespace Yaso\Bundle\EntityRatingBundle\Controller;
 
-use Blogtrotting\AdventureBundle\Manager\EntityRatingManager;
+use Yaso\Bundle\EntityRatingBundle\Manager\EntityRatingManager;
 use Yaso\Bundle\EntityRatingBundle\Exception\EntityRateIpLimitationReachedException;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -10,6 +10,17 @@ use Symfony\Component\HttpFoundation\Request;
 
 class EntityRatingController extends Controller
 {
+    /**
+     * @param Request $request
+     * @param $type
+     * @param $id
+     * @return JsonResponse
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     * @throws \ReflectionException
+     * @throws \Yaso\Bundle\EntityRatingBundle\Exception\UndeclaredEntityRatingTypeException
+     * @throws \Yaso\Bundle\EntityRatingBundle\Exception\UnsupportedEntityRatingClassException
+     */
     public function rateEntityAction(Request $request, $type, $id)
     {
         $manager = $this->container->getParameter('yaso_entity_rating.entity_rating_manager_service');

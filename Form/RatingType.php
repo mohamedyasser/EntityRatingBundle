@@ -8,7 +8,6 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class RatingType extends AbstractType
 {
-
     const STAR_NUMBER = 5;
 
     public function configureOptions(OptionsResolver $resolver)

@@ -63,6 +63,17 @@ class EntityRatingManager
         $this->entityRateRepository = $this->entityManager->getRepository($this->entityRatingClass);
     }
 
+    /**
+     * @param $entityType
+     * @param $entityId
+     * @param $rateValue
+     * @throws EntityRateIpLimitationReachedException
+     * @throws UndeclaredEntityRatingTypeException
+     * @throws UnsupportedEntityRatingClassException
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     * @throws \ReflectionException
+     */
     public function rate($entityType, $entityId, $rateValue)
     {
         $this->checkConfiguration($entityType);
@@ -81,6 +92,16 @@ class EntityRatingManager
         }
     }
 
+    /**
+     * @param $entityId
+     * @param $entityType
+     * @param $rateValue
+     * @throws UndeclaredEntityRatingTypeException
+     * @throws UnsupportedEntityRatingClassException
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     * @throws \ReflectionException
+     */
     protected function addRate($entityId, $entityType, $rateValue)
     {
         $this->checkConfiguration($entityType);
@@ -93,6 +114,13 @@ class EntityRatingManager
         $this->eventDispatcher->dispatch(RateCreatedEvent::NAME, new RateCreatedEvent($rate));
     }
 
+    /**
+     * @param EntityRate $rate
+     * @param $rateValue
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     * @throws \Exception
+     */
     protected function updateRate(EntityRate $rate, $rateValue)
     {
         $rate->setRate($rateValue);
@@ -114,11 +142,13 @@ class EntityRatingManager
     }
 
     /**
-     * @param      $entityType
-     * @param      $entityId
+     * @param $entityType
+     * @param $entityId
      * @param null $formName
-     *
      * @return \Symfony\Component\Form\FormInterface
+     * @throws UndeclaredEntityRatingTypeException
+     * @throws UnsupportedEntityRatingClassException
+     * @throws \ReflectionException
      */
     public function generateForm($entityType, $entityId, $formName = null)
     {
@@ -127,6 +157,13 @@ class EntityRatingManager
         return $this->formFactory->getForm($annotation, $entityType, $entityId, $formName);
     }
 
+    /**
+     * @param $entityType
+     * @return bool
+     * @throws UndeclaredEntityRatingTypeException
+     * @throws UnsupportedEntityRatingClassException
+     * @throws \ReflectionException
+     */
     protected function checkConfiguration($entityType)
     {
         if (false === array_key_exists($entityType, $this->mapTypeToClass)) {
@@ -142,8 +179,8 @@ class EntityRatingManager
 
     /**
      * @param $entityClass
-     *
-     * @return bool|Rated
+     * @return bool
+     * @throws \ReflectionException
      */
     protected function typeIsSupported($entityClass)
     {
@@ -159,8 +196,17 @@ class EntityRatingManager
         return false;
     }
 
+    /**
+     * @param $entityId
+     * @param $entityType
+     * @return array
+     * @throws UndeclaredEntityRatingTypeException
+     * @throws UnsupportedEntityRatingClassException
+     * @throws \ReflectionException
+     */
     public function getGlobalRateData($entityId, $entityType)
     {
+        /** @var Rated $annotation */
         $annotation        = $this->checkConfiguration($entityType);
         $averageRateResult = $this->entityRateRepository->getEntityAverageRate($entityId, $entityType);
 

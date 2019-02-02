@@ -4,7 +4,6 @@ namespace Yaso\Bundle\EntityRatingBundle\Factory;
 
 use Yaso\Bundle\EntityRatingBundle\Annotation\Rated;
 use Yaso\Bundle\EntityRatingBundle\Form\RatingType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormFactory;

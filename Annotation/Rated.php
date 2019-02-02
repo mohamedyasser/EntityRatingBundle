@@ -4,7 +4,7 @@ namespace Yaso\Bundle\EntityRatingBundle\Annotation;
 
 use Doctrine\Common\Annotations\Annotation\Attribute;
 use Doctrine\Common\Annotations\Annotation\Attributes;
-use Doctrine\ORM\Mapping\Annotation;
+use Doctrine\Common\Annotations\Annotation;
 
 /**
  * @Annotation
@@ -15,7 +15,7 @@ use Doctrine\ORM\Mapping\Annotation;
  *   @Attribute("step", type = "mixed"),
  * })
  */
-final class Rated implements Annotation
+final class Rated
 {
     private $min;
     private $max;

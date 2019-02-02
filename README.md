@@ -5,8 +5,8 @@
 #### Installation
 
 The easiest way is with [Composer](https://getcomposer.org/) package manager
-```json
-    composer require yaso/entity-rating-bundle
+```
+composer require yaso/entity-rating-bundle
 ```
 
 Register the bundle:

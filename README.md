@@ -6,9 +6,7 @@
 
 The easiest way is with [Composer](https://getcomposer.org/) package manager
 ```json
-"require": {
-    "yaso/entity-rating-bundle": "^1.0"
-}
+    composer require yaso/entity-rating-bundle
 ```
 
 Register the bundle:
